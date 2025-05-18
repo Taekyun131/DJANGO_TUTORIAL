@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 
 from pathlib import Path
 import os
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,7 +21,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-q#!+2zlx3o0(4b+$&ku651gm#)aj5+vur+()u!ou=m&)g0#-ng'
+SECRET_KEY = 'django-insecure-4$f1_2^g(08r&5$!zo6-zwkx@txs6^mzjijjn!$s=nc#q868ry'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -40,11 +41,10 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'users',
-    'corsheaders',  # CORS 정책을 준수하도록 설정
+    'posts',
 ]
 
-MIDDLEWARE = [  
-    'corsheaders.middleware.CorsMiddleware',    # 순서중요
+MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -53,10 +53,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
-
-CORS_ORIGIN_ALLOW_ALL=True
-CORS_ALLOW_CREDENTIALS=True
-
 
 ROOT_URLCONF = 'myboard.urls'
 
@@ -107,18 +103,15 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
-# 프로젝트의 인증 방식으로 토큰 방식을 사용한다는 것을 정의
+# 프로젝트의 인증 방식을 토큰 방식으로 사용 설정
 REST_FRAMEWORK={
     'DEFAULT_AUTHENTICATION_CLASSES':[
         'rest_framework.authentication.TokenAuthentication',
     ],
 }
 
-
 # Internationalization
 # https://docs.djangoproject.com/en/5.2/topics/i18n/
-
 
 LANGUAGE_CODE = 'en-us'
 
@@ -134,7 +127,7 @@ USE_TZ = True
 
 STATIC_URL = 'static/'
 MEDIA_URL='/media/'
-MEDIA_ROOT=os.path.join(BASE_DIR, 'media')
+MEDIA_ROOT=os.path.join(BASE_DIR,'media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.2/ref/settings/#default-auto-field
