@@ -15,3 +15,9 @@ class Post(models.Model):
     # related_name='like_posts': user.like_posts.all() 처럼 사용자가 좋아요한 글 목록 조회 가능
     likes=models.ManyToManyField(User, related_name='like_posts', blank=True)
     published_date=models.DateTimeField(default=timezone.now)
+
+class Comment(models.Model):
+    author=models.ForeignKey(User, on_delete=models.CASCADE)
+    profile=models.ForeignKey(Profile, on_delete=models.CASCADE)
+    post=models.ForeignKey(Post, related_name='comments', on_delete=models.CASCADE)
+    text=models.TextField()

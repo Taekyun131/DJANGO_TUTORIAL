@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'users',
     'posts',
+    'django_filters',
 ]
 
 MIDDLEWARE = [
@@ -103,11 +104,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-# 프로젝트의 인증 방식을 토큰 방식으로 사용 설정
+
 REST_FRAMEWORK={
-    'DEFAULT_AUTHENTICATION_CLASSES':[
-        'rest_framework.authentication.TokenAuthentication',
+    'DEFAULT_AUTHENTICATION_CLASSES':[  
+        'rest_framework.authentication.TokenAuthentication',   # 프로젝트의 인증 방식을 토큰 방식으로 사용 설정 
     ],
+    'DEFAULT_FILTER_BACKENDS':[
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ],
+    'DEFAULT_PAGINATION_CLASS':
+        'rest_framework.pagination.PageNumberPagination',       # 페이징 설정
+        'PAGE_SIZE':
+            3,
+    
 }
 
 # Internationalization
